@@ -1,0 +1,80 @@
+#include "sensordecorjv.h"
+#include "seguirlinhajv.h"
+#include "desviarobstaculojv.h"
+
+#define SENSOR_DISTA IN_4
+#define SEGUIR_LINHA  0
+#define DESVIAR_OBSTACULO 1
+#define DISTANCIA_MIN 10 
+/*void oqtaVendo(){
+
+if ( brancoDir() && brancoEsq() ) {
+			TextOut(10,20,"Branco");
+			}
+if ( pretoDir() && brancoEsq())	{	
+			TextOut(10,20,"Preto_dir, Branco_Esq");
+			}		TextOut(10,20,"Preto_Esq, Branco_dir");
+			}
+if ( pretoDir() && pretoEsq())	{	
+			TextOut(10,20,"Preto");
+			}
+		Wait (1000);
+		ResetScreen();
+}
+
+*/
+
+task main()
+{
+	int estado;
+	SetSensorColorFull (S2); // DIREITO
+  SetSensorColorFull (S1);  // ESQUERDO
+	SetSensorLowspeed (SENSOR_DISTA);
+
+
+
+while(true){
+		//RGB rgb=LerSensorCor(SENSOR_ESQ);
+		//HSV valHSV = SensorDir();
+		//seguirLinha();	
+		//oqtaVendo();
+		/*HSV valHSV = SensorDir();
+
+		TextOut(10,20,"H:");
+		NumOut(10,10,valHSV.h);
+		TextOut(30,40,"S");
+		NumOut(30,30,valHSV.s);
+		TextOut(50,60,"V");
+		NumOut(50,50,valHSV.v);
+		Wait (1000);
+		ResetScreen();
+		/*TextOut(10,20,"H:");
+		NumOut(10,10,valHSV.h);
+		TextOut(30,40,"S");
+		NumOut(30,30,valHSV.s);
+		TextOut(50,60,"V");
+		NumOut(50,50,valHSV.v);
+		Wait (1000);
+		ResetScreen();
+		*/
+if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
+		estado = SEGUIR_LINHA;
+	}
+	else {
+		estado = DESVIAR_OBSTACULO;
+	}
+	
+	//Estados:	
+	if (estado == SEGUIR_LINHA){
+		seguirLinha();
+	}
+	else if (estado == DESVIAR_OBSTACULO){
+		desviarObstaculo();
+	}	
+			
+
+
+}
+}
+
+	
