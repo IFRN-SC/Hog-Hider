@@ -2,12 +2,18 @@
 #define MOTOR_DIR OUT_A
 #define MOTOR_DIR_ESQ OUT_AC
 
-void desviarObstaculo(){
 
-		OnFwd(MOTOR_DIR_ESQ,0);
+
+	void girarEsquerda(){
+		RotateMotor(MOTOR_DIR_ESQ, 75, 45); 
+
+	}
+
+
+		//OnFwd(MOTOR_DIR_ESQ,0);
+/*
 		Wait (700);
 		OnFwd(MOTOR_DIR,80);
-//		Wait(4000);
 		OnRev(MOTOR_ESQ,75);
 		Wait (1043);
 		OnFwd(MOTOR_DIR_ESQ,0);
@@ -35,5 +41,6 @@ void desviarObstaculo(){
 		Wait (1043);
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);
-}
+*/
+
 
