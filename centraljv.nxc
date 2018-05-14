@@ -1,11 +1,16 @@
 #include "sensordecorjv.h"
 #include "seguirlinhajv.h"
 #include "desviarobstaculojv.h"
+#include "rampa.h"
 
 #define SENSOR_DISTA IN_4
+#define SENSOR_DISTA_RAMPA IN_3
 #define SEGUIR_LINHA  0
 #define DESVIAR_OBSTACULO 1
-#define DISTANCIA_MIN 10 
+#define RAMPA 2
+#define DISTANCIA_MIN 10
+#define DISTANCIA_MIN_RAMPA 5 
+
 /*void oqtaVendo(){
 
 if ( brancoDir() && brancoEsq() ) {
@@ -33,6 +38,7 @@ task main()
 
 
 
+
 while(true){
 		//RGB rgb=LerSensorCor(SENSOR_ESQ);
 		//HSV valHSV = SensorDir();
@@ -57,9 +63,13 @@ while(true){
 		Wait (1000);
 		ResetScreen();
 		*/
-if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
+	if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
 		estado = SEGUIR_LINHA;
 	}
+	if (SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA){
+		estado = RAMPA;
+	}
+
 	else {
 		estado = DESVIAR_OBSTACULO;
 	}
@@ -70,11 +80,15 @@ if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
 	}
 	else if (estado == DESVIAR_OBSTACULO){
 		desviarObstaculo();
+	}
+	else if (estado == RAMPA){
+		rampa();
 	}	
 			
 
 
 }
+
 }
 
 	
