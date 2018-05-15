@@ -9,7 +9,7 @@
 #define DESVIAR_OBSTACULO 1
 #define RAMPA 2
 #define DISTANCIA_MIN 10
-#define DISTANCIA_MIN_RAMPA 5 
+#define DISTANCIA_MIN_RAMPA 8 
 
 /*void oqtaVendo(){
 
@@ -35,6 +35,7 @@ task main()
 	SetSensorColorFull (S2); // DIREITO
   SetSensorColorFull (S1);  // ESQUERDO
 	SetSensorLowspeed (SENSOR_DISTA);
+	SetSensorLowspeed (SENSOR_DISTA_RAMPA);
 
 
 
@@ -63,14 +64,16 @@ while(true){
 		Wait (1000);
 		ResetScreen();
 		*/
-	if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
+		
+	if ((SensorUS (SENSOR_DISTA) > DISTANCIA_MIN) && (SensorUS (SENSOR_DISTA_RAMPA) > DISTANCIA_MIN_RAMPA)) {
 		estado = SEGUIR_LINHA;
 	}
-	if (SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA){
+
+	if ((SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA) && (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN)) {
 		estado = RAMPA;
 	}
 
-	else {
+	if ((SensorUS (SENSOR_DISTA) < DISTANCIA_MIN) && (SensorUS (SENSOR_DISTA_RAMPA) > DISTANCIA_MIN_RAMPA)) {
 		estado = DESVIAR_OBSTACULO;
 	}
 	
@@ -78,10 +81,10 @@ while(true){
 	if (estado == SEGUIR_LINHA){
 		seguirLinha();
 	}
-	else if (estado == DESVIAR_OBSTACULO){
+	 if (estado == DESVIAR_OBSTACULO){
 		desviarObstaculo();
 	}
-	else if (estado == RAMPA){
+	if (estado == RAMPA){
 		rampa();
 	}	
 			
