@@ -1,11 +1,16 @@
 #include "sensordecorjv.h"
 #include "seguirlinhajv.h"
 #include "desviarobstaculojv.h"
+#include "rampa.h"
 
 #define SENSOR_DISTA IN_4
+#define SENSOR_DISTA_RAMPA IN_3
 #define SEGUIR_LINHA  0
 #define DESVIAR_OBSTACULO 1
-#define DISTANCIA_MIN 10 
+#define RAMPA 2
+#define DISTANCIA_MIN 7
+#define DISTANCIA_MIN_RAMPA 12 
+
 /*void oqtaVendo(){
 
 if ( brancoDir() && brancoEsq() ) {
@@ -30,6 +35,8 @@ task main()
 	SetSensorColorFull (S2); // DIREITO
   SetSensorColorFull (S1);  // ESQUERDO
 	SetSensorLowspeed (SENSOR_DISTA);
+	SetSensorLowspeed (SENSOR_DISTA_RAMPA);
+
 
 
 
@@ -57,10 +64,16 @@ while(true){
 		Wait (1000);
 		ResetScreen();
 		*/
-if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
+		
+	if ((SensorUS (SENSOR_DISTA) > DISTANCIA_MIN) && (SensorUS (SENSOR_DISTA_RAMPA) > DISTANCIA_MIN_RAMPA)) {
 		estado = SEGUIR_LINHA;
 	}
-	else {
+
+	if ((SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA) && (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN)) {
+		estado = RAMPA;
+	}
+
+	if ((SensorUS (SENSOR_DISTA) < DISTANCIA_MIN) && (SensorUS (SENSOR_DISTA_RAMPA) > DISTANCIA_MIN_RAMPA)) {
 		estado = DESVIAR_OBSTACULO;
 	}
 	
@@ -68,13 +81,17 @@ if (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN){
 	if (estado == SEGUIR_LINHA){
 		seguirLinha();
 	}
-	else if (estado == DESVIAR_OBSTACULO){
-		girarEsquerda();
+	 if (estado == DESVIAR_OBSTACULO){
+		desviarObstaculo();
+	}
+	if (estado == RAMPA){
+		rampa();
 	}	
 			
 
 
 }
+
 }
 
 	
