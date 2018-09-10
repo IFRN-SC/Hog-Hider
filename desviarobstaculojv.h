@@ -18,7 +18,7 @@ void paraFrente(){
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);
 		OnFwd(MOTOR_DIR_ESQ,75);
-		Wait (1550);
+		Wait (1450);
 }
 
 
@@ -33,7 +33,7 @@ void paraFrente2(){
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);
 		OnFwd(MOTOR_DIR_ESQ,75);
-		Wait (2550);
+		Wait (2650);
 }
 
 
