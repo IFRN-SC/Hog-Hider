@@ -9,7 +9,7 @@ void paraGirarEsquerda(){
 		OnFwd(MOTOR_DIR,80);
 //		Wait(4000);
 		OnRev(MOTOR_ESQ,85);
-		Wait (1250);	
+		Wait (1320);	
 }
 
 
@@ -18,7 +18,7 @@ void paraFrente(){
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);
 		OnFwd(MOTOR_DIR_ESQ,75);
-		Wait (1450);
+		Wait (1420);
 }
 
 
@@ -33,7 +33,7 @@ void paraFrente2(){
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);
 		OnFwd(MOTOR_DIR_ESQ,75);
-		Wait (2650);
+		Wait (2450);
 }
 
 
@@ -49,7 +49,7 @@ void paraFrente3(){
 		OnFwd(MOTOR_DIR_ESQ,0);
 		Wait (700);	
 		OnFwd(MOTOR_DIR_ESQ,75);
-		Wait (1750);
+		Wait (1150);
 }
 
 void girarEsquerdaPara(){
