@@ -1,6 +1,7 @@
 #include "sensordecorjv.h"
 #include "seguirlinhajv.h"
-#include "desviarobstaculojv.h"
+//#include "desviarobstaculojv.h"
+#include "desviar.h"
 #include "rampa.h"
 
 #define SENSOR_DISTA IN_4
@@ -33,7 +34,7 @@ task main()
 {
 	int estado;
 	SetSensorColorFull (S2); // DIREITO
-  SetSensorColorFull (S1);  // ESQUERDO
+  	SetSensorColorFull (S1);  // ESQUERDO
 	SetSensorLowspeed (SENSOR_DISTA);
 	SetSensorLowspeed (SENSOR_DISTA_RAMPA);
 
@@ -69,7 +70,7 @@ while(true){
 		estado = SEGUIR_LINHA;
 	}
 
-	if ((SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA) && (SensorUS (SENSOR_DISTA) > DISTANCIA_MIN)) {
+	if (SensorUS (SENSOR_DISTA_RAMPA) < DISTANCIA_MIN_RAMPA) {
 		estado = RAMPA;
 	}
 
