@@ -8,7 +8,7 @@
 #define MEDIA_PRET_VERDE_DIR 120	 
 #define MEDIA_PRET_VERDE_ESQ 120
 #define MEDIA_PRET_VERDE_DIR_S 0.50
-#define MEDIA_PRET_VERDE_ESQ_S 0.41
+#define MEDIA_PRET_VERDE_ESQ_S 0.41                                                      
 
 struct RGB{
 	int r;
