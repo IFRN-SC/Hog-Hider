@@ -6,7 +6,7 @@
 #include "preto_preto.h"
 
 void seguirLinha(){
-		if ( pretoDir() && brancoEsq())	{
+		if ( pretoDir() && brancoEsq())	{		
 			OnFwd(MOTOR_ESQ, 90);
 			OnFwd(MOTOR_DIR,-80);
 			//Wait(100);
@@ -28,22 +28,23 @@ void seguirLinha(){
 		}
 		else if ( pretoEsq() && brancoDir()) {
 			OnFwd(MOTOR_DIR,90);
-			OnFwd(MOTOR_ESQ,-80);
-			
+			OnFwd(MOTOR_ESQ,-80);			
 		}
-		else if ( brancoDir() && brancoEsq() ) {		
-			OnFwd(MOTOR_DIR_ESQ,30);
-			
+		else if ( brancoDir() && brancoEsq() ) {
+			OnFwd(MOTOR_DIR_ESQ,30);			
 		}
-else if ( pretoEsq() && pretoDir()) {
-			preto_preto();			
+		else if ( pretoEsq() && pretoDir()) {
+		preto_preto();			
 		}
-	else if (brancoEsq() && verdeDir()) {
+		else if (brancoEsq() && verdeDir()) {		
 		verde_Dir();	
 		}
-		else if (verdeEsq() && brancoDir()) {
+		else if (verdeEsq() && brancoDir()) {			
 		verde_Esq();
 		}
+		
+		
+
 //else if (pretoEsq() && verdeDir()) {
 //			OnFwd(MOTOR_ESQ, 55);
 		//	OnFwd(MOTOR_DIR,-40);
