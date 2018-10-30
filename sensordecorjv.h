@@ -7,8 +7,8 @@
 #define MEDIA_PRAT_BRAN_ESQ 179000
 #define MEDIA_PRET_VERDE_DIR 120	 
 #define MEDIA_PRET_VERDE_ESQ 120
-#define MEDIA_PRET_VERDE_DIR_S 0.45
-#define MEDIA_PRET_VERDE_ESQ_S 0.35                                                      
+#define MEDIA_PRET_VERDE_DIR_S 0.30
+#define MEDIA_PRET_VERDE_ESQ_S 0.30                                                      
 
 struct RGB{
 	int r;
@@ -99,21 +99,21 @@ bool pretoEsq() {
 }
 bool verdeDir(){
 HSV valHSV = SensorDir();
-return (valHSV.v < MEDIA_PRET_VERDE_DIR && valHSV.s > MEDIA_PRET_VERDE_DIR_S);
+return (valHSV.v > MEDIA_PRET_VERDE_DIR && valHSV.s > MEDIA_PRET_VERDE_DIR_S);
 }
 bool verdeEsq(){
 HSV valHSV = SensorEsq();
-return (valHSV.v < MEDIA_PRET_VERDE_ESQ && valHSV.s > MEDIA_PRET_VERDE_ESQ_S);
+return (valHSV.v > MEDIA_PRET_VERDE_ESQ && valHSV.s > MEDIA_PRET_VERDE_ESQ_S);
 }
 
 bool brancoDir() {
 	HSV valHSV = SensorDir();
 	
-	return (valHSV.v < MEDIA_PRAT_BRAN_DIR && valHSV.v > MEDIA_PRET_VERDE_DIR);
+	return (valHSV.v < MEDIA_PRAT_BRAN_DIR && valHSV.v > MEDIA_PRET_VERDE_DIR && valHSV.s < MEDIA_PRET_VERDE_DIR_S);
 }
 bool brancoEsq() {
 	HSV valHSV = SensorEsq();
-	return (valHSV.v < MEDIA_PRAT_BRAN_ESQ && valHSV.v > MEDIA_PRET_VERDE_ESQ); 
+	return (valHSV.v < MEDIA_PRAT_BRAN_ESQ && valHSV.v > MEDIA_PRET_VERDE_ESQ && valHSV.s < MEDIA_PRET_VERDE_ESQ_S); 
 }
 
 bool prateadoDir() {
